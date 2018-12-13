@@ -1,0 +1,15 @@
+- import_tasks: base.yml
+  tags: bind
+
+- import_tasks: keys.yml
+  tags: bind
+
+- import_tasks: zones.yml
+  tags: bind
+
+- name: enable and start bind9
+  service:
+    name: bind9
+    enabled: yes
+    state: started
+  tags: bind
