@@ -1,0 +1,44 @@
+bind_options:
+  server-id: '"1"'
+
+bind_zones:
+  ninux.nnxx:
+    ns_primary: ns.ninux.nnxx
+    mail: admin@nnxx.ninux.org
+    serial: 2017092202
+    options:
+      auto-dnssec: maintain
+      inline-signing: yes
+    records:
+      - { name: '@', type: ns, value: localhost. }
+      - { name: ns, type: a, value: 10.27.250.1 }
+      - { name: dns, type: cname, value: ns.ninux.nnxx. }
+
+  basilicata.nnxx:
+    ns_primary: ns.basilicata.nnxx
+    mail: admin@basilicata.ninux.nnxx
+    serial: 2017092201
+    dnssec: no
+    #state: disabled
+    records:
+      - { name: '@', type: ns, value: localhost. }
+      - { name: ns, type: a, value: 10.27.22.5 }
+      - { name: nas, type: a, value: 10.27.22.2 }
+ 
+  '250.27.10.in-addr.arpa':
+    ns_primary: ns1.ninux.nnxx
+    mail: root@ninux.nnxx
+    serial: 2018060901
+    records:
+      - { name: '@', type: ns, value: ns.ninux.nnxx. }
+      - { name: '1', type: ptr, value: ns.ninux.nnxx. }
+
+  '22.27.10.in-addr.arpa':
+    ns_primary: ns.basilicata.nnxx
+    mail: root@basilicata.nnxx
+    serial: 2018060901
+    records:
+      - { name: '@', type: ns, value: ns.basilicata.nnxx. }
+      - { name: '5', type: ptr, value: ns.nasilicata.nnxx. }
+      - { name: '2', type: ptr, value: nas.basilicata.nnxx. }
+
