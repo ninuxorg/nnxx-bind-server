@@ -1,12 +1,8 @@
-- name: install packages for bind9
-  apt:
-    name: '{{ item }}'
-    state: present
-  with_items:
-    - bind9
-    - bind9-host
-    - cron
-    - dnsutils
+- name: Install packages for bind9
+  apt: >
+    name={{ packages }} state=present
+  tags: apt
+
 
 - name: create zone directory
   file:

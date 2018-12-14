@@ -1,3 +1,12 @@
 # vars file for dns
 ---
 dns_resolvconf_file: /etc/resolv.conf
+
+### packages
+## vars
+packages:
+  - bind9
+  - bind9-host
+  - cron
+  - dnsutils
+
