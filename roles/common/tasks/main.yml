@@ -25,8 +25,7 @@
 
 - name: Install dependencies and basic tools
   apt: >
-    pkg={{ item }} state=latest
-  with_items: "{{ packages }}"
+    name={{ packages }} state=latest
   tags: apt
 
 - name: Run apt-get upgrade
