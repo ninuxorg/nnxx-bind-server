@@ -1,3 +1,3 @@
 [dns-server]
 dns.nnxx.ninux.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
-
+dns2.nnxx.ninux.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
