@@ -3,7 +3,6 @@
     name={{ packages }} state=present
   tags: apt
 
-
 - name: create zone directory
   file:
     path: /etc/bind/zones
@@ -33,6 +32,20 @@
     - named.conf.local
   notify: restart bind
 
+- name: create keys directory
+  file:
+    path: /etc/bind/keys
+    owner: root
+    group: bind
+    mode: 0750
+    state: directory
+
+- name: configure dns servers - /etc/resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: "{{ dns_resolvconf_file }}"
+  tags: resolv.conf
+
 - name: copy host.conf
   copy:
     src: ../files/host.conf
@@ -43,25 +56,3 @@
     src: ../files/check-dns.sh
     dest: /root/
 
-- name: create keys directory
-  file:
-    path: /etc/bind/keys
-    owner: root
-    group: bind
-    mode: 0750
-    state: directory
-
-- name: add cron dnssec
-  template:
-    src: dnssec.j2
-    dest: /etc/cron.weekly/dnssec
-    owner: root
-    group: root
-    mode: 0700
-  tags: bind
-
-- name: configure dns servers - /etc/resolv.conf
-  template:
-    src: resolv.conf.j2
-    dest: "{{ dns_resolvconf_file }}"
-  tags: resolv.conf

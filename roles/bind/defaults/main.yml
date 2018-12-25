@@ -4,11 +4,10 @@ dns_nameservers:
    - 127.0.0.1
    - 8.8.8.8
    - 8.8.4.4
-
-# Setting Bind
 bind_role: master
 bind_listen_ipv4: true
 bind_listen_ipv6: true
 bind_options: {}
 bind_zones: {}
 bind_dnssec: {}
+

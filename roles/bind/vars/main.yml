@@ -10,3 +10,5 @@ packages:
   - cron
   - dnsutils
 
+# Directory with run-time stuff
+bind_dir: /etc/bind

@@ -1,10 +1,11 @@
-- import_tasks: base.yml
+- include: base.yml
   tags: bind
 
-- import_tasks: keys.yml
+- include: keys.yml
+  when: bind_role == 'master'
   tags: bind
 
-- import_tasks: zones.yml
+- include: zones.yml
   tags: bind
 
 - name: enable and start bind9
