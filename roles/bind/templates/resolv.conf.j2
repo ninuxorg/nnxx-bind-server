@@ -1,9 +1,0 @@
-# {{ ansible_managed }}
-
-{% if dns_searches %}
-search {{ dns_searches }}
-{% endif %}
-{% for dns_nameserver in dns_nameservers %}
-nameserver {{ dns_nameserver }}
-{% endfor %}
-
