@@ -1,0 +1,21 @@
+### common
+## defaults
+---
+common_ipv4_forward : 0
+common_ssh_port: 2400
+
+#sudoers
+base_svr_groups:
+  - name: michele
+    groupid: 30000
+    sudo: true
+  - name: marco
+    groupid: 31000
+    sudo: true
+  - name: federico
+    groupid: 32000
+    sudo: true
+  - name: nino
+    groupid: 33000
+    sudo: true
+

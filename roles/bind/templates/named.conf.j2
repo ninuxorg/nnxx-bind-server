@@ -1,0 +1,12 @@
+//
+// named.conf
+//
+
+include "{{ bind_config_options }}";
+include "{{ bind_config_local }}";
+{% for file in bind_default_zone_files %}
+include "{{ file }}";
+{% endfor %}
+{% for file in bind_extra_include_files %}
+include "{{ file }}";
+{% endfor %}

@@ -1,0 +1,27 @@
+---
+basilicata_nnxx:
+  - name: basilicata.nnxx
+    hostmaster_email: hostmaster
+    name_servers:
+      - localhost.
+      - ns1.basilicata.nnxx.
+    networks:
+      - '10.27.0'
+      - '10.27.10'
+      - '10.27.22'
+      - '10.27.23'
+    hosts:
+      - name: '@'
+        ip: 10.27.22.5
+      - name: 'ns1'
+        ip: 10.27.22.5
+      - name: 'imperial-oppido'
+        ip: 10.27.22.1
+      - name: 'imperial-hotspot'
+        ip: 10.27.23.1
+      - name: 'kali-matera'
+        ip: 10.27.0.1
+      - name: 'syskrack'
+        ip: 10.27.10.1
+      - name: 'nas'
+        ip: 10.27.22.2

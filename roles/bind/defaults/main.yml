@@ -1,0 +1,75 @@
+# roles/bind/defaults/main.yml
+---
+
+bind_log: "data/named.run"
+
+#bind_zone_domains:
+#  - name: "dns-nnxx.org"
+#    hostmaster_email: "hostmaster"
+#    networks:
+#      - "10.27"
+
+# List of acls.
+bind_acls:
+  - name: transfer
+    match_list:
+      - 10.0.0.0/8
+      - 176.9.187.208/28
+      - 176.9.204.48/29
+      - 188.40.254.208/29
+
+# List of IPv4 address of the network interface(s) to listen on. Set to "any"
+# to listen on all interfaces
+bind_listen_ipv4:
+  - "127.0.0.1"
+
+# List of IPv6 address of the network interface(s) to listen on.
+bind_listen_ipv6:
+  - "::1"
+
+# List of hosts that are allowed to query this DNS server.
+bind_allow_query:
+  - "any"
+
+# Determines whether recursion should be allowed. Typically, an authoritative
+# name server should have recursion turned OFF.
+bind_recursion: false
+bind_allow_recursion:
+  - "any"
+
+# Allows BIND to be set up as a caching name server
+bind_forward_only: false
+
+# List of name servers to forward DNS requests to.
+bind_forwarders:
+  - "8.8.8.8"
+  - "8.8.4.4"
+
+# DNS round robin order (random or cyclic)
+bind_rrset_order: "random"
+
+# DNSSEC configuration
+bind_dnssec_enable: true
+bind_dnssec_validation: true
+
+bind_extra_include_files: []
+
+# SOA information
+bind_zone_ttl: "1W"
+bind_zone_time_to_refresh: "1D"
+bind_zone_time_to_retry: "1H"
+bind_zone_time_to_expire: "1W"
+bind_zone_minimum_ttl: "1D"
+
+# Custom location for master zone files
+bind_zone_dir: "{{ bind_dir }}"
+# File mode for master zone files (needs to be something like 0660 for dynamic updates)
+bind_zone_file_mode: "0640"
+
+dns_resolvconf_file: /etc/resolv.conf
+dns_searches: ninux.nnxx
+dns_nameservers:
+   - 127.0.0.1
+   - 8.8.8.8
+   - 8.8.4.4
+
