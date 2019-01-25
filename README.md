@@ -16,6 +16,16 @@ E' un playbook per installare configurare un Server DNS con BIND ISC per più do
 
 Abbiamo il supporto per più zone e per IPv6.
 
+## Installazione di Ansible su Debian
+Add the following line to /etc/apt/sources.list
+~~~
+deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+$ sudo apt-get update
+$ sudo apt-get install ansible
+~~~
+
 ## Le Variabili per il ruolo di Bind9
 
 Variables are not required, unless specified.
