@@ -5,6 +5,8 @@ basilicata_nnxx:
     name_servers:
       - localhost.
       - ns1.basilicata.nnxx.
+    allow_update:
+      - 127.0.0.1
     networks:
       - '10.27.0'
       - '10.27.10'
