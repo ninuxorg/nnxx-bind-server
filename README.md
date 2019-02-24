@@ -33,6 +33,7 @@ Variables are not required, unless specified.
 | Variable                     | Default                          | Comments (type)                                                                                                             |
 | :---                         | :---                             | :---                                                                                                                        |
 | `bind_acls`                  | `[]`                             | A list of ACL definitions, which are dicts with fields `name` and `match_list`. See below for an example.                   |
+| `bind_dns_keys`                  | `[]`                             | A list of binding keys, which are dicts with fields `name` `algorithm` and `secret`. See below for an example.                   |
 | `bind_allow_query`           | `['localhost']`                  | A list of hosts that are allowed to query this DNS server. Set to ['any'] to allow all hosts                                |
 | `bind_allow_recursion`       | `['any']`                        | Similar to bind_allow_query, this option applies to recursive queries.                                                      |
 | `bind_check_names`           | `[]`                             | Check host names for compliance with RFC 952 and RFC 1123 and take the defined actioni (e.g. `warn`, `ignore`, `fail`). |
