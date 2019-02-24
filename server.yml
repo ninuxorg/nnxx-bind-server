@@ -36,4 +36,5 @@
       set_fact:
         bind_zone_domains:
           "{{ dns_nnxx_org }} +
-           {{ basilicata_nnxx }}"
+           {{ basilicata_nnxx }} +
+           {{ router_nnxx }}"
