@@ -1,0 +1,9 @@
+---
+router_nnxx:
+  - name: router.nnxx
+    hostmaster_email: hostmaster
+    name_servers:
+      - localhost.
+    allow_update:
+      - any
+
