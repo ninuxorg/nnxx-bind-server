@@ -33,7 +33,7 @@ bind_allow_query:
 
 # Determines whether recursion should be allowed. Typically, an authoritative
 # name server should have recursion turned OFF.
-bind_recursion: false
+bind_recursion: true
 bind_allow_recursion:
   - "any"
 
