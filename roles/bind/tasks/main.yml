@@ -9,6 +9,14 @@
     - "{{ ansible_os_family }}.yml"
   tags: bind,pretask
 
+- name: Install BIND
+  package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ bind_packages }}"
+  tags: bind
+
 # JY | file to set keys for XFR authentication
 - name: create extra config file for authenticated XFR request
   tags: pretask
@@ -22,14 +30,6 @@
 - name: Check whether `bind_zone_master_server_ip` was set
   assert:
     that: bind_zone_master_server_ip is defined
-
-- name: Install BIND
-  package:
-    pkg: "{{ item }}"
-    state: present
-  with_items:
-    - "{{ bind_packages }}"
-  tags: bind
 
 - name: Ensure runtime directories referenced in config exist
   file:
