@@ -1,0 +1,7 @@
+# roles/bind/handlers/main.yml
+---
+
+- name: reload openvpn
+  service:
+    name: "{{ openvpn_service }}"
+    state: reloaded

@@ -1,0 +1,52 @@
+# roles/vpnbas/tasks/main.yml
+---
+# Set ip forwarding on in /proc and in the sysctl file and reload if necessary
+- sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    sysctl_set: yes
+    state: present
+    reload: yes
+
+# Installazione di OpenVPN
+- name: Install OpenVPN
+  package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ openvpn_packages }}"
+  tags: openvpn
+
+# Crea il file user/password
+- name: create auth config file
+  tags: openvpn
+  template:
+    src: auth.j2
+    dest: /etc/openvpn/auth
+    mode: 0600
+    owner: root
+    group: root
+
+- name: copy CA
+  copy:
+    src: ../files/ca-3-vpn-basilicata.pem
+    dest: /etc/openvpn/ca-3-vpn-basilicata.pem
+
+- name: copy config vpnbas
+  copy:
+    src: ../files/vpnbas.ovpn
+    dest: /etc/openvpn/vpnbas.conf
+    mode: 0644
+
+- name: copy default openvpn
+  copy:
+    src: ../files/def-openvpn
+    dest: /etc/default/openvpn
+    mode: 0644
+
+- name: Start OpenVPN service
+  service:
+    name: "{{ openvpn_service }}"
+    state: started
+    enabled: true
+  tags: openvpn

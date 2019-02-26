@@ -1,0 +1,40 @@
+# roles/bind/tasks/master.yml
+# Set up a BIND slave server
+---
+
+- name: Slave | Options BIND config file (slave)
+  template:
+    src: slave_named.conf.options.j2
+    dest: "{{ bind_config_options }}"
+    owner: "{{ bind_owner }}"
+    group: "{{ bind_group }}"
+    mode: '0640'
+    setype: named_conf_t
+    validate: 'named-checkconf %s'
+  notify: reload bind
+  tags: bind
+
+- name: Slave | Local BIND config file (slave)
+  template:
+    src: slave_named.conf.local.j2
+    dest: "{{ bind_config_local }}"
+    owner: "{{ bind_owner }}"
+    group: "{{ bind_group }}"
+    mode: '0640'
+    setype: named_conf_t
+    validate: 'named-checkconf %s'
+  notify: reload bind
+  tags: bind
+
+# This needs to be here, otherwise won't validate if local and options don't exist.
+- name: Slave | Main BIND config file (slave)
+  template:
+    src: named.conf.j2
+    dest: "{{ bind_config }}"
+    owner: "{{ bind_owner }}"
+    group: "{{ bind_group }}"
+    mode: '0640'
+    setype: named_conf_t
+    validate: 'named-checkconf %s'
+  notify: reload bind
+  tags: bind

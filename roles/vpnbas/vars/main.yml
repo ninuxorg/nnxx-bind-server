@@ -1,0 +1,8 @@
+# roles/vpnbas/vars/main.yml
+---
+
+openvpn_packages:
+  - openvpn
+  - easy-rsa
+
+openvpn_service: openvpn
