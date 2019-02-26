@@ -4,6 +4,12 @@ router_nnxx:
     hostmaster_email: hostmaster
     name_servers:
       - localhost.
+    networks:
+      - '10.27.253'
     allow_update:
-      - any
+      - 10.27.0.0/16
+    hosts:
+      - name: '@'
+        ip: 10.27.253.10
+
 
