@@ -25,6 +25,7 @@
     # bind
     bind_listen_ipv4:
       - 127.0.0.1
+      - 10.27.253.10
       - 176.9.204.50
       - 176.9.187.218
     bind_zone_master_server_ip: 176.9.204.50
