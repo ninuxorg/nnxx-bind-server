@@ -1,9 +1,0 @@
-- hosts: dns-master
-  roles:
-          #    - vpnbas
-    - olsrd2
-  vars:
-    olsrd2_interfaces:
-      - vpnbas
-
-
