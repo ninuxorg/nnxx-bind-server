@@ -4,6 +4,8 @@ router_nnxx:
     hostmaster_email: hostmaster
     name_servers:
       - localhost.
+      - ns1.router.nnxx.
+      - ns2.router.nnxx.
     networks:
       - '10.27.253'
     allow_update:
@@ -11,5 +13,7 @@ router_nnxx:
     hosts:
       - name: '@'
         ip: 10.27.253.10
-
-
+      - name: 'ns1'
+        ip: 10.27.253.10
+      - name: 'ns2'
+        ip: 10.27.253.11
