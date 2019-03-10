@@ -1,0 +1,31 @@
+# roles/vpnbas/tasks/main.yml
+# Set up a VPN Basilicata
+---
+- name: Install OpenVPN
+  package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ openvpn_packages }}"
+  tags: vpnbas
+- name: Copy CA VPN Basilicata
+  copy:
+    src: "../files/ca-3-vpn-basilicata.pem"
+    dest: "{{ openvpndir }}/ca-3-vpn-basilicata.pem"
+  tags: vpnbas
+- name: Copy VPN Config Client
+  copy:
+    src: "../files/vpnbas.ovpn"
+    dest: "{{ openvpndir }}/vpnbas.conf"
+  tags: vpnbas
+- name: Copy VPN Default
+  copy:
+    src: "../files/def-openvpn"
+    dest: "{{ default_config }}"
+  tags: vpnbas
+- name: Config Auth VPN Client
+  template:
+    src: auth.j2
+    dest: "{{ openvpndir }}/auth"
+  notify: reload openvpn
+  tags: vpnbas
