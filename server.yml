@@ -2,6 +2,8 @@
   become: "{{ sudo | default('yes') }}"
   roles:
     - common
+    - vpnbas
+    - olsrd2
     - bind
   vars:
     # common
@@ -22,6 +24,12 @@
         authorized:
           - ./keys/federico-1.pub
           - ./keys/federico-2.pub
+    # User e Pass for Auth OpenVPN
+    vpnuser: "{{ inventory_hostname }}"
+    vpnpass: n1nuxb4sm4n4g3mentvpn
+    # OLSR interfaces
+    olsrd2_interfaces:
+      - vpnbas
     # bind
     bind_listen_ipv4:
       - 127.0.0.1
