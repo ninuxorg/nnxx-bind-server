@@ -209,3 +209,34 @@ Il nome della ACLs verra' aggiunta in `allow-transfer` nelle opzioni globali.
           "{{ nnxx_ninux_org }} +
            {{ ninux_nnxx }}"
 ```
+
+
+### Esempio client nsudate per OpenWRT
+```bash
+#!/bin/sh
+if which nsupdate >/dev/null; then
+
+ETH=br-lan
+DOMAIN=router.nnxx
+DNS=10.27.253.10
+SUB=$(cat /proc/sys/kernel/hostname)
+ECHO=$(which echo)
+NSUPDATE=$(which nsupdate)
+IP=$(ip addr show dev $ETH | grep 'inet ' | awk '{split($2,a,"/");print a[1];}')
+
+$ECHO "server $DNS" > /tmp/nsupdate
+$ECHO "debug yes" >> /tmp/nsupdate
+$ECHO "zone $DOMAIN." >> /tmp/nsupdate
+$ECHO "update delete $SUB.$DOMAIN" >> /tmp/nsupdate
+$ECHO "update add $SUB.$DOMAIN 60 A $IP" >> /tmp/nsupdate
+$ECHO "send" >> /tmp/nsupdate
+
+$NSUPDATE -v /tmp/nsupdate 2>&1
+
+else
+    echo installo nsupdate, riavvia lo script dopo
+    sleep 5
+    opkg update
+    opkg install bind-client
+fi
+```
