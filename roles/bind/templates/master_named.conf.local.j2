@@ -10,10 +10,10 @@ zone "{{ bind_zone.name }}" IN {
   file "{{ bind_zone_dir }}/{{ bind_zone.name }}";
   notify yes;
 {% if bind_zone.also_notify is defined %}
-  also-notify  { {{ bind_zone.also_notify|join(';') }}; };
+  also-notify  { {{ bind_zone.also_notify|join('; ') }}; };
 {% endif %}
 {% if bind_zone.allow_update is defined %}
-  allow-update { {{ bind_zone.allow_update|join(';') }}; };
+  allow-update { {{ bind_zone.allow_update|join('; ') }}; };
 {% else %}
   allow-update { none; };
 {% endif %}
@@ -29,10 +29,10 @@ zone "{{ ('.'.join(network.replace(network+'.','').split('.')[::-1])) }}.in-addr
   file "{{ bind_zone_dir }}/{{ ('.'.join(network.replace(network+'.','').split('.')[::-1])) }}.in-addr.arpa";
   notify yes;
 {% if bind_zone.also_notify is defined %}
-  also-notify  { {{ bind_zone.also_notify|join(';') }}; };
+  also-notify  { {{ bind_zone.also_notify|join('; ') }}; };
 {% endif %}
 {% if bind_zone.allow_update is defined %}
-  allow-update { {{ bind_zone.allow_update|join(';') }}; };
+  allow-update { {{ bind_zone.allow_update|join('; ') }}; };
 {% else %}
   allow-update { none; };
 {% endif %}
@@ -47,10 +47,10 @@ zone "{{ (network | ipaddr('revdns'))[-(9+(network|regex_replace('^.*/','')|int)
   file "{{ bind_zone_dir }}/{{ (network | ipaddr('revdns'))[-(9+(network|regex_replace('^.*/','')|int)//2):-1] }}";
   notify yes;
 {% if bind_zone.also_notify is defined %}
-  also-notify  { {{ bind_zone.also_notify|join(';') }}; };
+  also-notify  { {{ bind_zone.also_notify|join('; ') }}; };
 {% endif %}
 {% if bind_zone.allow_update is defined %}
-  allow-update { {{ bind_zone.allow_update|join(';') }}; };
+  allow-update { {{ bind_zone.allow_update|join('; ') }}; };
 {% else %}
   allow-update { none; };
 {% endif %}
