@@ -1,0 +1,23 @@
+# Defaults for olsrd2 initscript
+# sourced by /etc/init.d/olsrd2
+# installed at /etc/default/olsrd2 by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+#
+# uncomment the next line run olsrd automatically at startup
+#
+START_OLSRD2="YES"
+
+#
+# debuglevel from 1 (=quiet) to 9 (=max debug)
+# for running from init.d 0 is recommended
+#
+
+#
+# "command-line options"
+#
+DAEMON_OPTS="--set global.fork=true -l /etc/olsrd2/olsrd2.conf"
+

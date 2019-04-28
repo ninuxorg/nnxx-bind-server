@@ -1,0 +1,20 @@
+### olsrd2
+## tasks
+# Install olsrd2
+- name: Install OLSR v.2
+  apt:
+    deb: http://downloads.nnxx.ninux.org/olsrd2_latest_amd64.deb
+  notify: [restart olsrd2]
+  
+# Copy defaults olsrd2 
+- name: Copy defaults config olsrd2
+  copy: src=../files/olsrd2 dest=/etc/default/olsrd2
+  tags: olsrd2
+
+# Config OLDR v.2   
+- name: configure olsrd2
+  become: true
+  template:
+    src: olsrd2.conf.j2
+    dest: /etc/olsrd2/olsrd2.conf
+  notify: [restart olsrd2]

@@ -1,0 +1,7 @@
+### olsrd2
+## defaults
+---
+olsrd2_lan: "10.27.253.0/24"
+
+olsrd2_interfaces:
+  - vpnbas

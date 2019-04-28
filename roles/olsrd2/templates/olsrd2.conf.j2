@@ -1,0 +1,20 @@
+# define the interfaces used for olsrd2 mesh
+#
+# see http://www.olsr.org/mediawiki/index.php/OLSR_network_deployments
+# for help with first deployments
+
+[global]
+        plugin remotecontrol
+        plugin auto_ll4
+[telnet]
+        bindto  127.0.0.1
+        port 2009
+        
+[olsrv2]
+        lan {{ olsrd2_lan }}
+
+[interface=lo]                       
+{% for interface in olsrd2_interfaces %}
+[interface={{ interface }}]
+{% endfor %}
+
