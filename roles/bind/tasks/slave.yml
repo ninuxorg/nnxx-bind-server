@@ -1,6 +1,20 @@
 # roles/bind/tasks/master.yml
 # Set up a BIND slave server
 ---
+- name: Ensure runtime directories referenced in config exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: "{{ bind_group }}"
+    mode: 0770
+  with_items:
+    - "{{ bind_dir }}/dynamic"
+    - "{{ bind_dir }}/data"
+    - "{{ bind_dir }}/slaves"
+    - "{{ bind_zone_dir }}"
+  tags: bind
+
 
 - name: Slave | Options BIND config file (slave)
   template:
