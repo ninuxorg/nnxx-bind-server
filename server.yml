@@ -89,6 +89,8 @@
     - name: Merge zone dicts
       set_fact:
         bind_zone_domains:
-          "{{ basilicata_nnxx }}"
+          "{{ basilicata_nnxx }} +
+           {{ router_nnxx }}"
+
 
 
