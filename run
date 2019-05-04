@@ -1,0 +1,39 @@
+#!/bin/bash
+
+HEIGHT=15
+WIDTH=60
+CHOICE_HEIGHT=4
+BACKTITLE="Server Bind 9 con DDNS per Ninux NNXX"
+TITLE="Installazione server DNS per Ninux NNXX"
+MENU="Scegli una delle seguenti opzioni:"
+
+OPTIONS=(1 "All Server: Common"
+         2 "All Server: VPN and OLSRd2"
+         3 "Install/Configure Master and Slave Server: Bind"
+         4 "Install/Configure Only Bind Caching")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        1)
+            echo "You chose All Server: Common"
+            ;;
+        2)
+            echo "You chose All Server: VPN and OLSRd2"
+            ;;
+        3)
+            echo "You chose Install/Configure Master and Slave Server: Bind"
+            ;;
+        4)
+            echo "You chose Only Install/Configure Bind Caching"
+            sleep 3
+            ansible-playbook -i hosts server.yml -l dns-forwarder
+            ;;
+esac
