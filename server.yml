@@ -75,9 +75,7 @@
           - ./keys/federico-2.pub
     # bind
     bind_listen_ipv4:
-      - 127.0.0.1
-      - 10.27.253.10
-      - 10.27.253.11
+      - any
     bind_zone_master_server_ip: 10.27.253.10
     bind_allow_recursion: any
     bind_forward_only: true
