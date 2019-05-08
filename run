@@ -8,9 +8,10 @@ TITLE="Installazione server DNS per Ninux NNXX"
 MENU="Scegli una delle seguenti opzioni:"
 
 OPTIONS=(1 "All Server: Common"
-         2 "All Server: VPN and OLSRd2"
-         3 "Install/Configure Master and Slave Server: Bind"
-         4 "Install/Configure Only Bind Caching")
+         2 "Install and Configure VPN Basilicata"
+         3 "Install and Configure OLSRd2"
+         4 "Install and Configure Master and Slave Server: Bind"
+         5 "Install and Configure Only Bind Caching")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -24,16 +25,23 @@ clear
 case $CHOICE in
         1)
             echo "You chose All Server: Common"
+            ansible-playbook -i hosts common.yml -l common
             ;;
         2)
-            echo "You chose All Server: VPN and OLSRd2"
+            echo "You chose: Install and Configure VPN Basilicata"
+            ansible-playbook -i hosts vpn.yml -l vpn
             ;;
         3)
-            echo "You chose Install/Configure Master and Slave Server: Bind"
+            echo "You chose: Install and Configure OLSRd2"
+            ansible-playbook -i hosts olsrd2.yml -l olsrd
             ;;
         4)
-            echo "You chose Only Install/Configure Bind Caching"
+            echo "You chose Install and Configure Master and Slave Server: Bind"
+            ansible-playbook -i hosts dns-server.yml -l dns-server
+            ;;
+        5)
+            echo "You chose Only Install and Configure Bind Caching"
             sleep 3
-            ansible-playbook -i hosts server.yml -l dns-forwarder
+            ansible-playbook -i hosts dns-forwarder.yml -l dns-forwarder
             ;;
 esac

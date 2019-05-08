@@ -1,0 +1,8 @@
+- hosts: olsrd
+  become: "{{ sudo | default('yes') }}"
+  roles:
+    - olsrd2
+  vars:
+    olsrd2_interfaces:
+      - vpnbas
+
