@@ -22,3 +22,4 @@ packages:
     #  - linux-source
   - apt-transport-https
   - python-mysqldb
+  - net-tools
