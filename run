@@ -2,7 +2,7 @@
 
 HEIGHT=15
 WIDTH=60
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Server Bind 9 con DDNS per Ninux NNXX"
 TITLE="Installazione server DNS per Ninux NNXX"
 MENU="Scegli una delle seguenti opzioni:"
