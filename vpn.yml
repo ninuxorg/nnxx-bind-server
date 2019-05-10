@@ -3,7 +3,6 @@
   roles:
     - vpnbas
   vars:
-    vpnuser:
-      - "{{ inventory_hostname }}"
+    vpnuser: "{{ inventory_hostname }}"
     vpnpass: n1nuxb4sm4n4g3mentvpn
 
