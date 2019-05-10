@@ -5,4 +5,6 @@
   vars:
     olsrd2_interfaces:
       - vpnbas
+      - eth0
+      - wlan0
 
