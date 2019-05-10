@@ -11,9 +11,9 @@
         port 2009
         
 [olsrv2]
-        lan {{ olsrd2_lan }}
+        lan {{ vpnlan }}
 
-[interface=lo]                       
+[interface=lo]
 {% for interface in olsrd2_interfaces %}
 [interface={{ interface }}]
 {% endfor %}
