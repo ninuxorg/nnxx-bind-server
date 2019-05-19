@@ -2,7 +2,7 @@
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
 ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
 ns.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.5
-raspninux ansible_user=root ansible_port=2400 ansible_host=10.27.22.6
+proxy.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.6
 
 [vpn]
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
@@ -12,7 +12,6 @@ ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50 vpnlan=10.27.253.10
 ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218 vpnlan=10.27.253.11
 ns.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.5 vpnlan=10.27.22.5
-raspninux ansible_user=root ansible_port=2400 ansible_host=10.27.22.6 vpnlan=10.27.22.6
 
 [dns-server]
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50

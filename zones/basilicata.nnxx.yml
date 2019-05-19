@@ -12,3 +12,6 @@ basilicata_nnxx:
         ip: 10.27.22.5
       - name: 'nas'
         ip: 10.27.22.2
+      - name: 'proxy'
+        ip: 10.27.22.6
+
