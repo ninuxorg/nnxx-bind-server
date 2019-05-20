@@ -92,14 +92,15 @@ bind_zone_domains:
   - name: ninux.nnxx
     hosts:
       - name: dns
-        ip: 10.27.250.1
+        ip: 10.27.253.10
         ipv6: 2001:db8::1
+        ttl: 900
         aliases:
           - ns
       - name: '@'
         ip:
-          - 10.27.250.1
-          - 10.27.250.2
+          - 10.27.253.10
+          - 10.27.253.11
         ipv6:
           - 2001:db8::1
           - 2001:db8::2
