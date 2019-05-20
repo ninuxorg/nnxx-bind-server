@@ -36,4 +36,6 @@ dns_nnxx_org:
       - name: 'mail'
         ip: 188.40.254.210
         ttl: 300
-
+      - name: 'basilicata.ninux.org.'
+        aliases:
+          - www
