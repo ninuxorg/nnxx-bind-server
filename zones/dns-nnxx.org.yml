@@ -1,9 +1,8 @@
 ---
 dns_nnxx_org:
   - name: dns-nnxx.org
-    hostmaster_email: hostmaster
+    hostmaster_email: mikytux
     name_servers:
-      - localhost.
       - ns1.dns-nnxx.org.
       - ns2.dns-nnxx.org.
     also_notify:
@@ -16,20 +15,25 @@ dns_nnxx_org:
     mail_servers:
       - name: 'mail'
         preference: '10'
+        ttl: 300
     hosts:
       - name: '@'
         ip:
           - 176.9.204.50
           - 176.9.187.218
+        ttl: 900
         ipv6:
           - 2a01:4f8:13a:403:176:9:204:50
           - 2a01:4f8:13a:403:176:9:187:218
       - name: 'ns1'
         ip: 176.9.204.50
         ipv6: 2a01:4f8:13a:403:176:9:204:50
+        ttl: 900
       - name: 'ns2'
         ip: 176.9.187.218
         ipv6: 2a01:4f8:13a:403:176:9:187:218
+        ttl: 900
       - name: 'mail'
         ip: 188.40.254.210
+        ttl: 300
 
