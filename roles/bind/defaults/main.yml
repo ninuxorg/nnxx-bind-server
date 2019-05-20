@@ -17,6 +17,10 @@ bind_acls:
       - 176.9.187.208/28
       - 176.9.204.48/29
       - 188.40.254.208/29
+  - name: trusted
+    match_list:
+      - localhost
+      - 10.0.0.0/8
 
 # Key binding for slaves
 bind_dns_keys: []
@@ -41,7 +45,7 @@ bind_allow_query:
 # name server should have recursion turned OFF.
 bind_recursion: true
 bind_allow_recursion:
-  - "any"
+  - "trusted"
 
 # Allows BIND to be set up as a caching name server
 bind_forward_only: false
@@ -61,9 +65,9 @@ bind_dnssec_validation: auto
 bind_extra_include_files: []
 
 # SOA information
-bind_zone_ttl: "1W"
-bind_zone_time_to_refresh: "1D"
-bind_zone_time_to_retry: "1H"
+bind_zone_ttl: "2D"
+bind_zone_time_to_refresh: "8H"
+bind_zone_time_to_retry: "2H"
 bind_zone_time_to_expire: "1W"
 bind_zone_minimum_ttl: "1D"
 
