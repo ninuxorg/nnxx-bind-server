@@ -3,15 +3,23 @@ basilicata_nnxx:
   - name: basilicata.nnxx
     hostmaster_email: hostmaster
     name_servers:
-      - localhost.
       - ns1.basilicata.nnxx.
+      - ns2.basilicata.nnxx.
+      - pi-hole.basilicata.nnxx.
+    also_notify:
+      - 10.27.253.10
+      - 10.27.253.11
     hosts:
       - name: '@'
-        ip: 10.27.22.5
+        ip: 10.27.253.10
       - name: 'ns1'
+        ip: 10.27.253.10
+      - name: 'ns2'
+        ip: 10.27.253.11
+      - name: 'pi-hole'
         ip: 10.27.22.5
       - name: 'nas'
         ip: 10.27.22.2
-      - name: 'proxy'
+      - name: 'my-media'
         ip: 10.27.22.6
 
