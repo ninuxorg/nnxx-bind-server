@@ -1,8 +1,7 @@
 [common]
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
 ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
-ns.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.5
-proxy.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.6
+pi-hole.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.5
 
 [vpn]
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
@@ -18,4 +17,4 @@ ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
 ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
 
 [dns-forwarder]
-ns.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.5
+your-local-rp ansible_user=root ansible_port=2400 ansible_host=your-local-ip
