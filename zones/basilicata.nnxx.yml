@@ -18,8 +18,11 @@ basilicata_nnxx:
         ip: 10.27.253.11
       - name: 'pi-hole'
         ip: 10.27.22.5
+        ipv6: fd25:fc4:1261::5 
       - name: 'nas'
         ip: 10.27.22.2
+        ipv6: fd25:fc4:1261::2
       - name: 'my-media'
         ip: 10.27.22.6
+        ipv6: fd25:fc4:1261::6
 
