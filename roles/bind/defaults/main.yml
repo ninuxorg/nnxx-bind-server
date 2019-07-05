@@ -2,6 +2,7 @@
 ---
 
 bind_log: "data/named.run"
+bind_dnssec_key_dir: "/etc/bind/keys/"
 
 #bind_zone_domains:
 #  - name: "dns-nnxx.org"

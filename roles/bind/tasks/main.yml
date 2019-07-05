@@ -128,6 +128,9 @@
   include_tasks: slave.yml
   when: bind_zone_master_server_ip not in ansible_all_ipv4_addresses
 
+- name: Set up dnssec-keygen
+  include_tasks: dnssec-keygen.yml
+
 - name: Start BIND service
   service:
     name: "{{ bind_service }}"
