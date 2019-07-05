@@ -65,7 +65,6 @@ bind_statistics_host: 127.0.0.1
 bind_statistics_allow:
   - "127.0.0.1"
 
-
 # DNSSEC configuration
 bind_dnssec_enable: true
 bind_dnssec_validation: auto
