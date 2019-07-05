@@ -15,7 +15,7 @@
     state: present
   with_items:
     - "{{ bind_packages }}"
-  tags: bind
+  tags: bind,pretask
 
 # JY | file to set keys for XFR authentication
 - name: create extra config file for authenticated XFR request
