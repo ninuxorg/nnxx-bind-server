@@ -37,11 +37,11 @@ case $CHOICE in
             ;;
         4)
             echo "You chose Install and Configure Master and Slave Server: Bind"
-            ansible-playbook -i hosts dns-server.yml -l dns-server
+            ansible-playbook -i hosts dns_server.yml -l dns_server
             ;;
         5)
             echo "You chose Only Install and Configure Bind Caching"
             sleep 3
-            ansible-playbook -i hosts dns-forwarder.yml -l dns-forwarder
+            ansible-playbook -i hosts dns_forwarder.yml -l dns_forwarder
             ;;
 esac

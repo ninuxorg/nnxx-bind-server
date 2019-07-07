@@ -12,9 +12,9 @@ ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50 v
 ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218 vpnlan=10.27.253.11
 ns.basilicata.nnxx ansible_user=root ansible_port=2400 ansible_host=10.27.22.5 vpnlan=10.27.22.5
 
-[dns-server]
+[dns_server]
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
 ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
 
-[dns-forwarder]
+[dns_forwarder]
 your-local-rp ansible_user=root ansible_port=2400 ansible_host=your-local-ip

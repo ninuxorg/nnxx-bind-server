@@ -1,0 +1,25 @@
+- hosts: dns_server
+  become: "{{ sudo | default('yes') }}"
+  roles:
+    - bind
+  tags:
+    - bind-server
+  vars:
+    bind_listen_ipv4:
+      - 127.0.0.1
+      - 10.27.253.10
+      - 10.27.253.11
+      - 176.9.204.50
+      - 176.9.187.218
+    bind_zone_master_server_ip: 176.9.204.50
+  pre_tasks:
+    - name: Get dict for each zone
+      include_vars:
+        dir: zones
+    - name: Merge zone dicts
+      set_fact:
+        bind_zone_domains:
+          "{{ dns_nnxx_org }} +
+           {{ basilicata_nnxx }} +
+           {{ router_nnxx }}"
+

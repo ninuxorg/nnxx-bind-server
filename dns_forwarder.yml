@@ -1,0 +1,22 @@
+- hosts: dns_forwarder
+  become: "{{ sudo | default('yes') }}"
+  roles:
+    - bind
+  tags:
+    - bind-forwarder
+  vars:
+    bind_listen_ipv4:
+      - any
+    bind_zone_master_server_ip: 10.27.253.10
+    bind_allow_recursion: any
+    bind_forward_only: true
+    bind_recursion: true
+  pre_tasks:
+    - name: Get dict for each zone
+      include_vars:
+        dir: zones
+    - name: Merge zone dicts
+      set_fact:
+        bind_zone_domains:
+          "{{ basilicata_nnxx }} +
+           {{ router_nnxx }}"
