@@ -5,7 +5,6 @@ basilicata_nnxx:
     name_servers:
       - ns1.basilicata.nnxx.
       - ns2.basilicata.nnxx.
-      - pi-hole.basilicata.nnxx.
     also_notify:
       - 10.27.253.10
       - 10.27.253.11
@@ -16,9 +15,6 @@ basilicata_nnxx:
         ip: 10.27.253.10
       - name: 'ns2'
         ip: 10.27.253.11
-      - name: 'pi-hole'
-        ip: 10.27.22.5
-        ipv6: fd25:fc4:1261::5 
       - name: 'nas'
         ip: 10.27.22.2
         ipv6: fd25:fc4:1261::2
