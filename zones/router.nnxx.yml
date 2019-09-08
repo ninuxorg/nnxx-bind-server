@@ -3,7 +3,6 @@ router_nnxx:
   - name: router.nnxx
     hostmaster_email: hostmaster
     name_servers:
-      - localhost.
       - ns1.router.nnxx.
       - ns2.router.nnxx.
     networks:
