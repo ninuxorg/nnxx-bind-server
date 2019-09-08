@@ -65,4 +65,14 @@ logging {
   };
   category queries { querylog; };
 {% endif %}
+{% if bind_security_log is defined %}
+    channel security_file {
+        file "{{ bind_security_log }}" versions 3 size 30m;
+        severity dynamic;
+        print-time yes;
+    };
+    category security {
+        security_file;
+    };
+{% endif %}
 };

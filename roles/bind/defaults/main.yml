@@ -2,6 +2,8 @@
 ---
 
 bind_log: "data/named.run"
+bind_query_log: "data/query.log"
+bind_security_log: "data/security.log"
 
 #bind_zone_domains:
 #  - name: "dns-nnxx.org"
