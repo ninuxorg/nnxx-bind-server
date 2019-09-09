@@ -26,6 +26,12 @@ $ sudo apt-get update
 $ sudo apt-get install ansible
 ~~~
 
+Installa i ruoli necessari con il comando:
+```
+ansible-galaxy install -f -r requirements.yml
+```
+
+
 ## Le Variabili per il ruolo di Bind9
 
 Variables are not required, unless specified.

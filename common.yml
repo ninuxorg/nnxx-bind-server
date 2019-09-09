@@ -1,11 +1,13 @@
 - hosts: common
   become: "{{ sudo | default('yes') }}"
   roles:
-    - common
+    - mikysal78.ninux_common
+    - mikysal78.ansible_iptables
+    - mikysal78.ansible_fail2ban
   vars:
     # common
-    common_ipv4_forward: 1
-    common_ssh_port: 2400
+    ninux_common_ipv4_forward: 1
+    ninux_common_ssh_port: 2400
     # variabili per ruolo common
     users:
       - name: michele
@@ -21,4 +23,6 @@
         authorized:
           - ./keys/federico-1.pub
           - ./keys/federico-2.pub
+    ssh_port: 2400
+    mail_admin: mikysal78@gmail.com
 
