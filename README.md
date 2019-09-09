@@ -2,18 +2,21 @@
 
 [![N|Solid](http://basilicata.ninux.org/images/Logo_Ninux_Basilicata_600-192.png)](http://basilicata.ninux.org)
 
-E' un playbook per installare configurare un Server DNS con BIND ISC per più domini Debian/Ubuntu (prossimamente anche per RedHat/CentOS). NEllo specifico il playbook è diviso in 2 ruoli, uno di base COMMON ed uno per BIND.
+E' un playbook per installare configurare un Server DNS con BIND ISC per più domini Debian/Ubuntu (prossimamente anche per RedHat/CentOS). NEllo specifico il playbook è diviso in 3 ruoli, uno di base COMMON ed uno per BIND.
 - Common configura principalmente:
   - porta ssh
   - utenti e chiavi ssh
   - banner
   - configura il profile per gli alias, colori nel terminale
+  - iptables: blocco INPUT con accesso SSH, OLSRd2, OpenVPN e DNS
+  - fail2ban: regole per SSH, OpenVPN e DNS
+- OpenVPN: installazione e configurazione della VPN Basilicata (attuale openwisp2 ninux di testing)
+- OLSRd2: installazione e configurazione di olsrd2 per accesso alla rete VPNBAS
 - installa BIND
   - configurazione dei file principali
       - master server
       - slave server
   - imposta i file di zona
-
 Abbiamo il supporto per più zone e per IPv6.
 
 ## Installazione di Ansible su Debian
