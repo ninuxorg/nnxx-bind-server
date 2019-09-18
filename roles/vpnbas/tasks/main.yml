@@ -33,6 +33,6 @@
 - name: Copy file modules for tun vpn
   copy:
     src: "../files/modules"
-    dest: "/etc/modules"
+    dest: "/etc/modules-load.d/vpnbas.conf"
   tags: modules
 
