@@ -1,7 +1,6 @@
 [common]
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
 ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
-pi-hole.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.217
 
 [vpn]
 ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
