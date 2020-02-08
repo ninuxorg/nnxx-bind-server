@@ -6,19 +6,22 @@ basilicata_nnxx:
       - ns1.basilicata.nnxx.
       - ns2.basilicata.nnxx.
     also_notify:
-      - 10.27.253.10
-      - 10.27.253.11
+      - 10.27.253.1
+      - 10.27.253.2
     hosts:
       - name: '@'
-        ip: 10.27.253.10
+        ip: 10.27.253.1
       - name: 'ns1'
-        ip: 10.27.253.10
+        ip: 10.27.253.1
       - name: 'ns2'
-        ip: 10.27.253.11
+        ip: 10.27.253.2
       - name: 'nas'
         ip: 10.27.22.2
         ipv6: fd25:fc4:1261::2
       - name: 'my-media'
         ip: 10.27.22.6
         ipv6: fd25:fc4:1261::6
-
+      - name: 'jenkins'
+        ip: 10.27.22.113
+        aliases:
+          - downloads
