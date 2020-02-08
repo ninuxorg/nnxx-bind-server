@@ -1,18 +1,18 @@
 [common]
-ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
-ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
+#openwisp.nnxx.ninux.org ansible_user=root ansible_port=2400
+dns.nnxx.ninux.org ansible_user=root ansible_port=2400
 
 [vpn]
-ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
-ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
+#openwisp.nnxx.ninux.org ansible_user=root ansible_port=2400
+dns.nnxx.ninux.org ansible_user=root ansible_port=2400
 
 [olsrd]
-ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50 vpnlan=10.27.253.10
-ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218 vpnlan=10.27.253.11
+#openwisp.nnxx.ninux.org ansible_user=root ansible_port=2400 vpnlan=10.27.253.1
+dns.nnxx.ninux.org ansible_user=root ansible_port=2400 vpnlan=10.27.253.2
 
 [dns_server]
-ns1.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.204.50
-ns2.dns-nnxx.org ansible_user=root ansible_port=2400 ansible_host=176.9.187.218
+openwisp.nnxx.ninux.org ansible_user=root ansible_port=2400
+dns.nnxx.ninux.org ansible_user=root ansible_port=2400
 
 [dns_forwarder]
 your-local-rp ansible_user=root ansible_port=2400 ansible_host=your-local-ip
