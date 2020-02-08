@@ -3,10 +3,76 @@
 
 bind_log: "data/named.run"
 bind_query_log: "data/query.log"
-bind_security_log: "data/security.log"
+
+bind_other_logs:
+  - name: security_file
+    file: data/security.log
+    versions: 3
+    size: "5m"
+    category: "security"
+  - name: database_file
+    file: data/database.log
+    versions: 3
+    size: "5m"
+    category: "database"
+  - name: security_file
+    file: data/security.log
+    versions: 3
+    size: "5m"
+    category: "security"
+  - name: config_file
+    file: data/config.log
+    versions: 3
+    size: "5m"
+    category: "config"
+  - name: resolver_file
+    file: data/resolver.log
+    versions: 3
+    size: "5m"
+    category: "resolver"
+  - name: xfer-in_file
+    file: data/xfer-in.log
+    versions: 3
+    size: "5m"
+    category: "xfer-in"
+  - name: xfer-out_file
+    file: data/xfer-out.log
+    versions: 3
+    size: "5m"
+    category: "xfer-out"
+  - name: notify_file
+    file: data/notify.log
+    versions: 3
+    size: "5m"
+    category: "notify"
+  - name: client_file
+    file: data/client.log
+    versions: 3
+    size: "5m"
+    category: "client"
+  - name: unmatched_file
+    file: data/unmatched.log
+    versions: 3
+    size: "5m"
+    category: "unmatched"
+  - name: network_file
+    file: data/network.log
+    versions: 3
+    size: "5m"
+    category: "network"
+  - name: update_file
+    file: data/ddns_update.log
+    versions: 3
+    size: "5m"
+    category: "update"
+  - name: dnssec_file
+    file: data/dnssec.log
+    versions: 3
+    size: "5m"
+    category: "dnssec"
 
 #bind_zone_domains:
-#  - name: "dns-nnxx.org"
+#  - name: "basilicata.nnxx"
 #    hostmaster_email: "hostmaster"
 #    networks:
 #      - "10.27"
@@ -16,9 +82,7 @@ bind_acls:
   - name: transfer
     match_list:
       - 10.0.0.0/8
-      - 176.9.187.208/28
-      - 176.9.204.48/29
-      - 188.40.254.208/29
+      - 94.130.248.184/29
   - name: trusted
     match_list:
       - localhost
@@ -60,16 +124,23 @@ bind_forwarders:
 # DNS round robin order (random or cyclic)
 bind_rrset_order: "random"
 
+# statistics channels configuration
+bind_statistics_channels: true
+bind_statistics_port: 8053
+bind_statistics_host: 127.0.0.1
+bind_statistics_allow:
+  - "127.0.0.1"
+
 # DNSSEC configuration
 bind_dnssec_enable: true
-bind_dnssec_validation: auto
+bind_dnssec_validation: true
 
 bind_extra_include_files: []
 
 # SOA information
-bind_zone_ttl: "2D"
-bind_zone_time_to_refresh: "8H"
-bind_zone_time_to_retry: "2H"
+bind_zone_ttl: "1W"
+bind_zone_time_to_refresh: "1D"
+bind_zone_time_to_retry: "1H"
 bind_zone_time_to_expire: "1W"
 bind_zone_minimum_ttl: "1D"
 
@@ -79,9 +150,10 @@ bind_zone_dir: "{{ bind_dir }}"
 bind_zone_file_mode: "0660"
 
 dns_resolvconf_file: /etc/resolv.conf
-dns_searches: ninux.nnxx
+dns_searches: basilicata.nnxx
 dns_nameservers:
    - 127.0.0.1
    - 8.8.8.8
    - 8.8.4.4
 
+bind_check_names: 'master ignore'

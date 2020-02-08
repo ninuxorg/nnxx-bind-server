@@ -1,3 +1,4 @@
+
 server {{ ansible_default_ipv4.address }} {
   keys { {% for mykey in bind_dns_keys %} {{ mykey.name }}; {% endfor %} };
 };
@@ -8,3 +9,4 @@ key {{ mykey.name }} {
   secret "{{ mykey.secret }}";
 {% endfor %}
 };
+

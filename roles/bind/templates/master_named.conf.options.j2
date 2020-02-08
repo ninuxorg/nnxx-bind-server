@@ -2,7 +2,7 @@
 // named.conf.options
 //
 {{ ansible_managed | comment('c') }}
-
+//
 {% for acl in bind_acls %}
 acl "{{ acl.name }}" {
 {% for match in acl.match_list %}
@@ -12,13 +12,13 @@ acl "{{ acl.name }}" {
 
 {% endfor %}
 options {
-  listen-on port 53 { {{ bind_listen_ipv4|join(';') }}; };
-  listen-on-v6 port 53 { {{ bind_listen_ipv6|join(';') }}; };
+  listen-on port 53 { {{ bind_listen_ipv4|join('; ') }}; };
+  listen-on-v6 port 53 { {{ bind_listen_ipv6|join('; ') }}; };
   directory   "{{ bind_dir }}";
   dump-file   "{{ bind_dir }}/data/cache_dump.db";
   statistics-file "{{ bind_dir }}/data/named_stats.txt";
   memstatistics-file "{{ bind_dir }}/data/named_mem_stats.txt";
-  allow-query     { {{ bind_allow_query|join(';') }}; };
+  allow-query     { {{ bind_allow_query|join('; ') }}; };
 {% if bind_acls|length != 0 %}
   allow-transfer  { {% for acl in bind_acls %}"{{ acl.name }}"; {% endfor %}};
 {% endif %}
@@ -36,7 +36,6 @@ options {
 
   dnssec-enable {{ bind_dnssec_enable }};
   dnssec-validation {{ bind_dnssec_validation }};
-  dnssec-lookaside auto;
 
   /* Path to ISC DLV key */
   bindkeys-file "/etc/named.iscdlv.key";
@@ -45,11 +44,17 @@ options {
 
   pid-file "/run/named/named.pid";
   session-keyfile "/run/named/session.key";
-
 {% if bind_query_log is defined %}
+
   querylog yes;
 {% endif %}
 };
+
+{% if bind_statistics_channels %}
+statistics-channels {
+  inet {{ bind_statistics_host }} port {{ bind_statistics_port }} allow { {{ bind_statistics_allow|join('; ') }}; };
+};
+{% endif %}
 
 logging {
   channel default_debug {
@@ -65,14 +70,16 @@ logging {
   };
   category queries { querylog; };
 {% endif %}
-{% if bind_security_log is defined %}
-    channel security_file {
-        file "{{ bind_security_log }}" versions 3 size 30m;
-        severity dynamic;
-        print-time yes;
-    };
-    category security {
-        security_file;
-    };
+{% if bind_other_logs is defined %}
+
+{% for log in bind_other_logs %}
+  channel {{ log.name }} {
+    file "{{ log.file }}" versions {{ log.versions }} size {{ log.size }};
+    severity dynamic;
+    print-time yes;
+  };
+  category "{{ log.category }}" { "{{ log.name }}"; };
+
+{% endfor %}
 {% endif %}
 };

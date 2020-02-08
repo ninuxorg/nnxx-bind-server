@@ -2,7 +2,7 @@
 // named.conf.local
 //
 {{ ansible_managed | comment('c') }}
-
+//
 {% if bind_zone_domains is defined %}
 {% for bind_zone in bind_zone_domains %}
 zone "{{ bind_zone.name }}" IN {
