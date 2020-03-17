@@ -25,3 +25,8 @@ basilicata_nnxx:
         ip: 10.27.22.113
         aliases:
           - downloads
+      - name: pc-fisso
+        ip: 10.27.22.100
+        aliases:
+          - virtualbox
+          - vbox
